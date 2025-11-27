@@ -17,11 +17,15 @@
 
 <body>
   <aside class="side-bar">
-    <img src="images/SAEPSaude.png" alt="">
+    <img id="logo-principal" src="images/SAEPSaude.png" alt="">
     <h2>SAEPSaúde</h2>
     <div class="resumo-qtd">
-      <h3>Qtd. Atividades</h3>
-      <h3>Qtd. Calorias</h3>
+      <h4>Qtd. Atividades</h4>
+      <h4>Qtd. Calorias</h4>
+    </div>
+    <div class="aba-atividade">
+      <img id="progresso" src="images/progresso.svg" alt="">
+      <h3>Atividade</h3>
     </div>
     <footer class="side-bar-footer">
       <h3>SAEPSaúde</h3>
@@ -34,6 +38,40 @@
     </footer>
   </aside>
   <main class="conteudo">
+    <div class="btn_lc">
+      <button class="btn_loggin" onclick="openModal('modalLogin')">Login</button>
+      <button class="btn_cadastro" onclick="openModal('modalCadastro')">Cadastre-se</button>
+    </div>
+    <div id="modalCadastro" class="modal">
+      <div class="modal-content">
+        <span class="close" data-close="modalCadastro">&times;</span>
+        <h2>Cadastre-se</h2>
+        <form action="cadastro.php" method="post">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="senha" placeholder="Senha" required>
+          <button type="submit" class="btn-cadastrar">Cadastrar</button>
+          <button type="button" class="btn-cancelar" onclick="closeModal('modalCadastro')">Cancelar</button>
+        </form>
+      </div>
+    </div>
+    <div id="modalLogin" class="modal">
+      <div class="modal-content">
+        <span class="close" data-close="modalLogin">&times;</span>
+        <h2>Login</h2>
+        <form action="cadastro.php" method="post">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="password" name="senha" placeholder="Senha" required>
+          <button type="submit" class="btn-cadastrar">Login</button>
+          <button type="button" class="btn-cancelar" onclick="closeModal('modalLogin')">Cancelar</button>
+        </form>
+      </div>
+    </div>
+    <div class="titulo-tabela">
+      <h3>Corrida</h3>
+      <h3>Caminhada</h3>
+      <h3>Trilha</h3>
+    </div>
     <div class="usuario-card">
       <div class="card-header">
         <img src="images/usuario01.jpg" alt="Usuario_01" />
@@ -52,8 +90,8 @@
           <span class="valor">310 kcal</span><br /><small>Calorias</small>
         </div>
         <div class="info likes-comments">
-          <span>♥ 12</span>
-          <span>💬 3</span>
+          <span><img src="images/coracao.svg" alt="">12</span>
+          <span><img src="images/comentario.svg" alt=""> 3</span>
         </div>
       </div>
     </div>
@@ -76,8 +114,8 @@
           <span class="valor">190 kcal</span><br /><small>Calorias</small>
         </div>
         <div class="info likes-comments">
-          <span>♥ 8</span>
-          <span>💬 1</span>
+          <span><img src="images/coracao.svg" alt="">12</span>
+          <span><img src="images/comentario.svg" alt=""> 3</span>
         </div>
       </div>
     </div>
@@ -100,13 +138,15 @@
           <span class="valor">450 kcal</span><br /><small>Calorias</small>
         </div>
         <div class="info likes-comments">
-          <span>♥ 22</span>
-          <span>💬 5</span>
+          <span><img src="images/coracao.svg" alt="">12</span>
+          <span><img src="images/comentario.svg" alt=""> 3</span>
         </div>
       </div>
     </div>
 
   </main>
+  <script src="js/modal.js"></script>
 </body>
+
 
 </html>
