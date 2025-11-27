@@ -112,7 +112,7 @@ $error = $_GET['error'] ?? '';
           <span class="valor">310 kcal</span><br /><small>Calorias</small>
         </div>
         <div class="info likes-comments">
-          <span><img src="images/coracao.svg" alt="">12</span>
+          <span class="like"><img src="images/coracao.svg" alt="">12</span>
           <span><img src="images/comentario.svg" alt=""> 3</span>
         </div>
       </div>
@@ -136,7 +136,7 @@ $error = $_GET['error'] ?? '';
           <span class="valor">190 kcal</span><br /><small>Calorias</small>
         </div>
         <div class="info likes-comments">
-          <span><img src="images/coracao.svg" alt="">12</span>
+          <span class="like"><img src="images/coracao.svg" alt="">12</span>
           <span><img src="images/comentario.svg" alt=""> 3</span>
         </div>
       </div>
@@ -160,7 +160,7 @@ $error = $_GET['error'] ?? '';
           <span class="valor">450 kcal</span><br /><small>Calorias</small>
         </div>
         <div class="info likes-comments">
-          <span><img src="images/coracao.svg" alt="">12</span>
+          <span class="like"><img src="images/coracao.svg" alt="">12</span>
           <span><img src="images/comentario.svg" alt=""> 3</span>
         </div>
       </div>
@@ -168,6 +168,7 @@ $error = $_GET['error'] ?? '';
 
   </main>
   <script src="js/modal.js"></script>
+  <script src="js/coracao.js"></script>
 </body>
 
 
