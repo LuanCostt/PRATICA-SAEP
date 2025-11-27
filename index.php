@@ -1,8 +1,23 @@
 <?php
+session_start();
+require_once 'Model/Connection.php';
+require_once 'Model/User.php';
+require_once 'Controller/UserController.php';
 
+use Controller\UserController;
 
+$controller = new UserController();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['nome'])) {
+        $controller->registerUser();
+    } elseif (isset($_POST['email']) && isset($_POST['senha']) && !isset($_POST['nome'])) {
+        $controller->login();
+    }
+}
 
+$success = $_GET['success'] ?? '';
+$error = $_GET['error'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -39,19 +54,26 @@
   </aside>
   <main class="conteudo">
     <div class="btn_lc">
-      <button class="btn_loggin" onclick="openModal('modalLogin')">Login</button>
-      <button class="btn_cadastro" onclick="openModal('modalCadastro')">Cadastre-se</button>
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <form method="post" action="index.php?action=logout">
+          <button type="submit" class="btn_cadastro">Logout</button>
+        </form>
+      <?php else: ?>
+        <button class="btn_loggin" onclick="openModal('modalLogin')">Login</button>
+        <button class="btn_cadastro" onclick="openModal('modalCadastro')">Cadastre-se</button>
+      <?php endif; ?>
     </div>
+
     <div id="modalCadastro" class="modal">
       <div class="modal-content">
         <span class="close" data-close="modalCadastro">&times;</span>
         <h2>Cadastre-se</h2>
-        <form action="cadastro.php" method="post">
+        <form method="POST" action="">
           <input type="text" name="nome" placeholder="Nome" required>
           <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="nome_usuario" placeholder="Nome de usuário" required>
           <input type="password" name="senha" placeholder="Senha" required>
           <button type="submit" class="btn-cadastrar">Cadastrar</button>
-          <button type="button" class="btn-cancelar" onclick="closeModal('modalCadastro')">Cancelar</button>
         </form>
       </div>
     </div>
@@ -59,12 +81,12 @@
       <div class="modal-content">
         <span class="close" data-close="modalLogin">&times;</span>
         <h2>Login</h2>
-        <form action="cadastro.php" method="post">
-          <input type="text" name="nome" placeholder="Nome" required>
+        <form method="POST" action="">
+          <input type="email" name="email" placeholder="Email" required>
           <input type="password" name="senha" placeholder="Senha" required>
-          <button type="submit" class="btn-cadastrar">Login</button>
-          <button type="button" class="btn-cancelar" onclick="closeModal('modalLogin')">Cancelar</button>
+          <button type="submit">Login</button>
         </form>
+
       </div>
     </div>
     <div class="titulo-tabela">

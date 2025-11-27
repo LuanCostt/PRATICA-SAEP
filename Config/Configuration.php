@@ -1,6 +1,6 @@
 <?php
 
-define( "DB_NAME","pratica_saep");
+define( "DB_NAME","saep-saude");
 define( "DB_HOST","localhost");
 define( "DB_USER","root");
 define( "DB_PASSWORD","");
